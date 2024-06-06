@@ -11,7 +11,7 @@ const Tshirts = () => {
                 <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block " src="https://m.media-amazon.com/images/I/81wFLUDzAbL._SY741_.jpg" />
               <div className="mt-4 text-center md:text-left">
                 <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-                <h2 className="text-gray-900 title-font text-lg font-medium">Wear the code</h2>
+                <h2 className="text-gray-900 title-font text-lg font-medium">Wear from Haven</h2>
                 <p className="mt-1">₹499</p>
                 <p className="mt-1">S, M, L, XL, XXL</p>
               </div>
@@ -21,7 +21,7 @@ const Tshirts = () => {
                 <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block" src="https://m.media-amazon.com/images/I/81wFLUDzAbL._SY741_.jpg" />
               <div className="mt-4 text-center md:text-left">
                 <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-                <h2 className="text-gray-900 title-font text-lg font-medium">Wear the code</h2>
+                <h2 className="text-gray-900 title-font text-lg font-medium">Wear from Haven</h2>
                 <p className="mt-1">₹499</p>
                 <p className="mt-1">S, M, L, XL, XXL</p>
               </div>
@@ -31,7 +31,7 @@ const Tshirts = () => {
                 <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block" src="https://m.media-amazon.com/images/I/81wFLUDzAbL._SY741_.jpg" />
               <div className="mt-4 text-center md:text-left">
                 <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-                <h2 className="text-gray-900 title-font text-lg font-medium">Wear the code</h2>
+                <h2 className="text-gray-900 title-font text-lg font-medium">Wear from Haven</h2>
                 <p className="mt-1">₹499</p>
                 <p className="mt-1">S, M, L, XL, XXL</p>
               </div>
@@ -41,7 +41,7 @@ const Tshirts = () => {
                 <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block" src="https://m.media-amazon.com/images/I/81wFLUDzAbL._SY741_.jpg" />
               <div className="mt-4 text-center md:text-left">
                 <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-                <h2 className="text-gray-900 title-font text-lg font-medium">Wear the code</h2>
+                <h2 className="text-gray-900 title-font text-lg font-medium">Wear from Haven</h2>
                 <p className="mt-1">₹499</p>
                 <p className="mt-1">S, M, L, XL, XXL</p>
               </div>
@@ -51,7 +51,7 @@ const Tshirts = () => {
                 <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block" src="https://m.media-amazon.com/images/I/81wFLUDzAbL._SY741_.jpg" />
               <div className="mt-4 text-center md:text-left">
                 <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-                <h2 className="text-gray-900 title-font text-lg font-medium">Wear the code</h2>
+                <h2 className="text-gray-900 title-font text-lg font-medium">Wear from Haven</h2>
                 <p className="mt-1">₹499</p>
                 <p className="mt-1">S, M, L, XL, XXL</p>
               </div>
@@ -61,7 +61,7 @@ const Tshirts = () => {
                 <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block" src="https://m.media-amazon.com/images/I/81wFLUDzAbL._SY741_.jpg" />
               <div className="mt-4 text-center md:text-left">
                 <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-                <h2 className="text-gray-900 title-font text-lg font-medium">Wear the code</h2>
+                <h2 className="text-gray-900 title-font text-lg font-medium">Wear from Haven</h2>
                 <p className="mt-1">₹499</p>
                 <p className="mt-1">S, M, L, XL, XXL</p>
               </div>
@@ -71,7 +71,7 @@ const Tshirts = () => {
                 <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block" src="https://m.media-amazon.com/images/I/81wFLUDzAbL._SY741_.jpg" />
               <div className="mt-4 text-center md:text-left">
                 <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-                <h2 className="text-gray-900 title-font text-lg font-medium">Wear the code</h2>
+                <h2 className="text-gray-900 title-font text-lg font-medium">Wear from Haven</h2>
                 <p className="mt-1">₹499</p>
                 <p className="mt-1">S, M, L, XL, XXL</p>
               </div>
@@ -81,7 +81,7 @@ const Tshirts = () => {
                 <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block" src="https://m.media-amazon.com/images/I/81wFLUDzAbL._SY741_.jpg" />
               <div className="mt-4 text-center md:text-left">
                 <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-                <h2 className="text-gray-900 title-font text-lg font-medium">Wear the code</h2>
+                <h2 className="text-gray-900 title-font text-lg font-medium">Wear from Haven</h2>
                 <p className="mt-1">₹499</p>
                 <p className="mt-1">S, M, L, XL, XXL</p>
               </div>
@@ -91,7 +91,7 @@ const Tshirts = () => {
                 <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block" src="https://m.media-amazon.com/images/I/81wFLUDzAbL._SY741_.jpg" />
               <div className="mt-4 text-center md:text-left">
                 <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-                <h2 className="text-gray-900 title-font text-lg font-medium">Wear the code</h2>
+                <h2 className="text-gray-900 title-font text-lg font-medium">Wear from Haven</h2>
                 <p className="mt-1">₹499</p>
                 <p className="mt-1">S, M, L, XL, XXL</p>
               </div>
@@ -101,7 +101,7 @@ const Tshirts = () => {
                 <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block" src="https://m.media-amazon.com/images/I/81wFLUDzAbL._SY741_.jpg" />
               <div className="mt-4 text-center md:text-left">
                 <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-                <h2 className="text-gray-900 title-font text-lg font-medium">Wear the code</h2>
+                <h2 className="text-gray-900 title-font text-lg font-medium">Wear from Haven</h2>
                 <p className="mt-1">₹499</p>
                 <p className="mt-1">S, M, L, XL, XXL</p>
               </div>
