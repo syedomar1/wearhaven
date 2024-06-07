@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { AiOutlineShoppingCart, AiOutlineCloseCircle } from "react-icons/ai";
 import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
 import { IoBagCheckOutline } from "react-icons/io5";
+import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import {useRef} from 'react'
 
 
@@ -47,7 +48,10 @@ const Navbar = () => {
       </div>
     </li>
   </ol>
-  <button className="flex mx-auto mt-16 text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-sm"><IoBagCheckOutline className='m-1' />Checkout</button>
+  <div className='flex'>
+  <button className="flex mr-2 text-white bg-red-500 border-0 py-2 px-2 focus:outline-none hover:bg-red-600 rounded text-sm"><IoBagCheckOutline className='m-1' />Checkout</button>
+  <button className="flex mr-2 text-white bg-red-500 border-0 py-2 px-2 focus:outline-none hover:bg-red-600 rounded text-sm"><MdOutlineRemoveShoppingCart className='m-1' />Clear Cart</button>
+  </div>
 </div>
 </div>
   )
