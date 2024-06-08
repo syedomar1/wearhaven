@@ -59,7 +59,7 @@ const Checkout = ({cart, subTotal, addToCart, removeFromCart}) => {
       </div>
         </div>
         </div>
-        <h2 className='font-semibold text-xl'>2. Review Cart Items</h2>
+        <h2 className='font-semibold text-xl'>2. Review Cart Items & Pay</h2>
         <div className="p-6 m-2">
         <ol className="list-decimal font-semibold">
           {Object.keys(cart).length == 0 && (
