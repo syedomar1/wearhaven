@@ -13,74 +13,75 @@ const Footer = () => {
         <Image src="/logo.png" alt="Logo" width={100} height={40}/>
       </div>
         </Link>
-      <p className="mt-2 text-sm text-gray-500 px-3">Your Haven for clothes</p>
+      <p className="mt-2 text-sm text-gray-500 px-1">Your Haven for clothes</p>
+      <p className="text-sm text-gray-500 px-1">Premium tshirts, hoodies and apparels</p>
     </div>
     <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
       <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">SHOP</h2>
         <nav className="list-none mb-10">
           <li>
-            <a className="text-gray-600 hover:text-gray-800">First Link</a>
+            <Link href={'/tshirts'} className="text-gray-600 hover:text-gray-800">Tshirts</Link>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Second Link</a>
+            <Link href={'/hoodies'} className="text-gray-600 hover:text-gray-800">Hoodies</Link>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Third Link</a>
+            <Link href={'/stickers'} className="text-gray-600 hover:text-gray-800">Stickers</Link>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
+            <Link href={'/mugs'} className="text-gray-600 hover:text-gray-800">Mugs</Link>
           </li>
         </nav>
       </div>
       <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">ABOUT</h2>
         <nav className="list-none mb-10">
           <li>
-            <a className="text-gray-600 hover:text-gray-800">First Link</a>
+            <a className="text-gray-600 hover:text-gray-800">About Us</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Second Link</a>
+            <Link href={'/contact'} className="text-gray-600 hover:text-gray-800">Contact Us </Link>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Third Link</a>
+            <a className="text-gray-600 hover:text-gray-800">Careers</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
+            <a className="text-gray-600 hover:text-gray-800">Press</a>
           </li>
         </nav>
       </div>
       <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">POLICY</h2>
         <nav className="list-none mb-10">
           <li>
-            <a className="text-gray-600 hover:text-gray-800">First Link</a>
+            <a className="text-gray-600 hover:text-gray-800">Cancellation & Returns</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Second Link</a>
+            <a className="text-gray-600 hover:text-gray-800">Terms Of Use</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Third Link</a>
+            <a className="text-gray-600 hover:text-gray-800">Security</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
+            <a className="text-gray-600 hover:text-gray-800">Privacy</a>
           </li>
         </nav>
       </div>
       <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">SOCIAL</h2>
         <nav className="list-none mb-10">
           <li>
-            <a className="text-gray-600 hover:text-gray-800">First Link</a>
+            <a className="text-gray-600 hover:text-gray-800">Twitter</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Second Link</a>
+            <a className="text-gray-600 hover:text-gray-800">LinkedIn</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Third Link</a>
+            <a className="text-gray-600 hover:text-gray-800">Instagram</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
+            <a className="text-gray-600 hover:text-gray-800">Facebook</a>
           </li>
         </nav>
       </div>
@@ -88,10 +89,8 @@ const Footer = () => {
   </div>
   <div className="bg-gray-100">
     <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-      <p className="text-gray-500 text-sm text-center sm:text-left">© 2020 Tailblocks —
-        <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" className="text-gray-600 ml-1" target="_blank">@knyttneve</a>
-      </p>
-      <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+      <p className="text-gray-500 text-sm text-center sm:text-left">© 2024 WearHaven.com - All Rights Reserved</p>
+      {/* <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
         <a className="text-gray-500">
           <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
             <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
@@ -114,7 +113,7 @@ const Footer = () => {
             <circle cx="4" cy="4" r="2" stroke="none"></circle>
           </svg>
         </a>
-      </span>
+      </span> */}
     </div>
   </div>
 </footer>

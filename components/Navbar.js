@@ -32,16 +32,16 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
       <div className="nav">
         <ul className="flex items-center space-x-6 font-bold md:text-md">
           <Link href={"/tshirts"}>
-            <li>Tshirts</li>
+            <li className="hover:text-red-700">Tshirts</li>
           </Link>
           <Link href={"/hoodies"}>
-            <li>Hoodies</li>
+            <li className="hover:text-red-700">Hoodies</li>
           </Link>
           <Link href={"/stickers"}>
-            <li>Stickers</li>
+            <li className="hover:text-red-700">Stickers</li>
           </Link>
           <Link href={"/mugs"}>
-            <li>Mugs</li>
+            <li className="hover:text-red-700">Mugs</li>
           </Link>
         </ul>
       </div>
@@ -74,7 +74,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
             return (
               <li key={k}>
                 <div className="item flex my-5">
-                  <div className="w-2/3 font-semibold">{cart[k].name}</div>
+                  <div className="w-2/3 font-semibold">{cart[k].name}({cart[k].size}/{cart[k].variant})</div>
                   <div className="flex items-center justify-center font-semibold w-1/3 text-lg">
                     <CiCircleMinus
                       className="cursor-pointer"
