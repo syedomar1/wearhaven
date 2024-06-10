@@ -2,6 +2,8 @@ import {React, useState} from 'react'
 import { useRouter } from 'next/router'
 import mongoose from 'mongoose'
 import Product from '@/models/Product'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Post = ({buyNow,addToCart, product, variants}) => {
   // console.log(product, variants)
@@ -15,9 +17,31 @@ const Post = ({buyNow,addToCart, product, variants}) => {
         // console.log(pinJson,pin)
         if(pinJson.includes(parseInt(pin))){
             setService(true)
+            toast.success('Your pincode is serviceable', {
+              position: "bottom-center",
+              autoClose: 1000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              // transition: Bounce,
+              });
         }
         else{
             setService(false)
+            toast.error('Sorry! We do not deliver currently in this area.', {
+              position: "bottom-center",
+              autoClose: 1000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              // transition: Bounce,
+              });
         }
     }
     const onChangePin = (e) =>{
@@ -34,6 +58,18 @@ const Post = ({buyNow,addToCart, product, variants}) => {
 
     return <>
     <section className="text-gray-600 body-font overflow-hidden">
+    <ToastContainer
+position="bottom-center"
+autoClose={3000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
   <div className="container px-5 py-16 mx-auto">
     <div className="lg:w-4/5 mx-auto flex flex-wrap">
       <img alt="ecommerce" className="lg:w-1/2 w-full px-24 lg:h-auto object-cover object-top rounded" src={product.img}/>
@@ -108,9 +144,9 @@ const Post = ({buyNow,addToCart, product, variants}) => {
           </div>
         </div>
         <div className="flex">
-          <span className="title-font font-medium text-2xl text-gray-900">₹499</span>
-          <button onClick={()=>{addToCart(slug, 1, 499,product.title,size,color)}} className="flex ml-8 text-white bg-red-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-red-600 rounded">Add to cart</button>
-          <button onClick={()=>{buyNow(slug, 1, 499,product.title,size,color)}} className="flex ml-4 text-white bg-red-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-red-600 rounded">Buy Now</button>
+          <span className="title-font font-medium text-2xl text-gray-900">₹{product.price}</span>
+          <button onClick={()=>{addToCart(slug, 1, product.price,product.title,size,color)}} className="flex ml-8 text-white bg-red-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-red-600 rounded">Add to cart</button>
+          <button onClick={()=>{buyNow(slug, 1, product.price,product.title,size,color)}} className="flex ml-4 text-white bg-red-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-red-600 rounded">Buy Now</button>
           {/* <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
             <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
               <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
@@ -139,7 +175,7 @@ export async function getServerSideProps(context) {
     await mongoose.connect(process.env.MONGO_URI);
   }
   let product = await Product.findOne({slug: context.query.slug});
-  let variants = await Product.find({title: product.title});
+  let variants = await Product.find({title: product.title, category: product.category});
   let colorSizeSlug = {}
   for(let item of variants){
       if(Object.keys(colorSizeSlug).includes(item.color)){
