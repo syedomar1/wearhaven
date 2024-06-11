@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useState} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
@@ -9,9 +9,40 @@ import { IoBagCheckOutline } from "react-icons/io5";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 
 const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [address, setAddress] = useState('')
+  const [pincode, setPincode] = useState('')
+  const [city, setCity] = useState('')
+  const [state, setState] = useState('')
+  const [disabled, setDisabled] = useState(true)
+  const handleChange = (e) =>{
+    if(e.target.name == 'name'){
+      setName(e.target.value)
+    }
+    else if(e.target.name == 'phone'){
+      setPhone(e.target.value)
+    }
+    else if(e.target.name == 'email'){
+      setEmail(e.target.value)
+    }
+    else if(e.target.name == 'address'){
+      setAddress(e.target.value)
+    }
+    else if(e.target.name == 'pincode'){
+      setPincode(e.target.value)
+    }
+    if(name && email && phone && address && pincode){
+      setDisabled(false)
+    }
+    else{
+      setDisabled(true)
+    }
+  }
   const initiatePayment = async() => {
     let oid = Math.floor(Math.random() * Date.now());
-    const data = {cart, subTotal, oid, email: "email"};
+    const data = {cart, subTotal, oid, email, name, address, pincode, phone};
     let a = await fetch(`/api/pretransaction`, {
       method: "POST",
       headers: {
@@ -71,8 +102,8 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
             <label htmlFor="name" className="leading-7 text-sm text-gray-600">
               Name
             </label>
-            <input
-              type="name"
+            <input onChange={handleChange} value={name}
+              type="text"
               id="name"
               name="name"
               className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
@@ -84,7 +115,7 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
             <label htmlFor="email" className="leading-7 text-sm text-gray-600">
               Email
             </label>
-            <input
+            <input onChange={handleChange} value={email}
               type="email"
               id="email"
               name="email"
@@ -98,7 +129,7 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
           <label htmlFor="address" className="leading-7 text-sm text-gray-600">
             Address
           </label>
-          <textarea
+          <textarea onChange={handleChange} value={address}
             name="address"
             id="address"
             className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
@@ -111,7 +142,7 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
             <label htmlFor="phone" className="leading-7 text-sm text-gray-600">
               Phone
             </label>
-            <input
+            <input onChange={handleChange} value={phone}
               type="phone"
               id="phone"
               name="phone"
@@ -121,15 +152,19 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
         </div>
         <div className="px-2 w-1/2">
           <div className="mb-4">
-            <label htmlFor="city" className="leading-7 text-sm text-gray-600">
-              City
+          <label
+              htmlFor="pincode"
+              className="leading-7 text-sm text-gray-600"
+            >
+              PinCode
             </label>
-            <input
-              type="city"
-              id="city"
-              name="city"
+            <input onChange={handleChange} value={pincode}
+              type="pincode"
+              id="pincode"
+              name="pincode"
               className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
+            
           </div>
         </div>
       </div>
@@ -139,27 +174,24 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
             <label htmlFor="state" className="leading-7 text-sm text-gray-600">
               State
             </label>
-            <input
+            <input value={state}
               type="state"
               id="state"
               name="state"
-              className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly={true}
             />
           </div>
         </div>
         <div className="px-2 w-1/2">
           <div className="mb-4">
-            <label
-              htmlFor="pincode"
-              className="leading-7 text-sm text-gray-600"
-            >
-              PinCode
+          <label htmlFor="city" className="leading-7 text-sm text-gray-600">
+              City
             </label>
-            <input
-              type="pincode"
-              id="pincode"
-              name="pincode"
-              className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+            <input value={city}
+              type="city"
+              id="city"
+              name="city"
+              className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly={true}
             />
           </div>
         </div>
@@ -206,10 +238,9 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
       </div>
       <div className="mx-4">
         <Link href={"/checkout"}>
-          {" "}
-          <button
+          <button disabled={disabled}
             onClick={initiatePayment}
-            className="flex mr-2 text-white bg-red-500 border-0 py-2 px-2 focus:outline-none hover:bg-red-600 rounded text-sm"
+            className="flex mr-2 text-white bg-red-500 disabled:bg-red-300 border-0 py-2 px-2 focus:outline-none hover:bg-red-600 rounded text-sm"
           >
             <IoBagCheckOutline className="m-1" />
             Pay ₹{subTotal}
