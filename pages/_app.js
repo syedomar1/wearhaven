@@ -4,16 +4,24 @@ import Footer from "../components/Footer"
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import LoadingBar from 'react-top-loading-bar'
 
 export default function App({ Component, pageProps }) {
   const [cart, setCart] = useState({})
   const [subTotal, setSubTotal] = useState(0)
   const [user, setUser] = useState({value:null})
   const [key, setKey] = useState(0)
+  const [progress, setProgress] = useState(0)
   const router = useRouter()
 
   useEffect(() => {
-    console.log("Hello I am useEffect")
+    router.events.on('routeChangeComplete', ()=>{
+      setProgress(40)
+    })
+    router.events.on('routeChangeComplete', ()=>{
+      setProgress(100)
+    })
+    // console.log("Hello I am useEffect")
     try {
       if (localStorage.getItem('cart')) {
         setCart(JSON.parse(localStorage.getItem('cart')))
@@ -85,6 +93,12 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
+     <LoadingBar
+        color='#e74c3c'
+        progress={progress}
+        waitingTime={400}
+        onLoaderFinished={() => setProgress(0)}
+      />
       <Head>
         <meta name="viewport" content="width=device-width , initial-scale=1.0 , minimum-scale=1.0" />
       </Head>
