@@ -6,8 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const router = useRouter();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   useEffect(() => {
     if(localStorage.getItem('token')){
@@ -99,7 +99,7 @@ const Login = () => {
           <form onSubmit={handleSubmit} className="space-y-6" method="POST">
             <div>
               <label
-                for="email"
+                htmlFor="email"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Email address
@@ -122,7 +122,7 @@ const Login = () => {
             <div>
               <div className="flex items-center justify-between">
                 <label
-                  for="password"
+                  htmlFor="password"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
                   Password
