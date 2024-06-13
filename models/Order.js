@@ -7,6 +7,7 @@ const OrderSchema = new mongoose.Schema({
         address: {type: String, required: true},
         amount: {type: Number, required: true},
         status: {type: String, default: 'Inititated', required: true},
+        deliverStatus: {type: String, default: 'Unshipped', required: true},
 }, {timestamps:true});
 
 // mongoose.models = {}

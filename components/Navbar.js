@@ -25,9 +25,9 @@ const Navbar = ({logout, user, cart, addToCart, removeFromCart, clearCart, subTo
 
   return (
     <div className="flex flex-col md:flex-row md:justify-start justify-center items-center py-2 shadow-md sticky top-0 bg-white z-10">
-      <div className="logo mr-auto md:mx-5">
+      <div className="logo mr-auto md:mx-5 w-full max-w-[180px]">
         <Link href={"/"}>
-          <Image src="/logo.png" alt="Logo" height={40} width={180} />
+          <Image src="/logo.png" alt="Logo" height={40} width={180} className="w-full h-auto"/>
         </Link>
       </div>
       <div className="nav">
@@ -117,15 +117,15 @@ const Navbar = ({logout, user, cart, addToCart, removeFromCart, clearCart, subTo
 
         <div className="flex">
           <Link href={"/checkout"}>
-            {" "}
-            <button className="flex mr-2 text-white bg-red-500 border-0 py-2 px-2 focus:outline-none hover:bg-red-600 rounded text-sm">
+            {/* {" "} */}
+            <button disabled={Object.keys(cart).length === 0} className="disabled:bg-red-300 flex mr-2 text-white bg-red-500 border-0 py-2 px-2 focus:outline-none hover:bg-red-600 rounded text-sm">
               <IoBagCheckOutline className="m-1" />
               Checkout
             </button>
           </Link>
-          <button
+          <button disabled={Object.keys(cart).length === 0}
             onClick={clearCart}
-            className="flex mr-2 text-white bg-red-500 border-0 py-2 px-2 focus:outline-none hover:bg-red-600 rounded text-sm"
+            className="disabled:bg-red-300 flex mr-2 text-white bg-red-500 border-0 py-2 px-1 focus:outline-none hover:bg-red-600 rounded text-sm"
           >
             <MdOutlineRemoveShoppingCart className="m-1" />
             Clear Cart

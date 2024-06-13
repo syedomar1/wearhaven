@@ -9,8 +9,12 @@ const handler = async (req, res) => {
     // Check if the cart is tampered
     let product, sumTotal = 0;
     let cart = req.body.cart;
+    if(req.body.subTotal <= 0){
+      res.status(200).json({success:false, "error": "Cart Empty! Please build your cart and Try Again!"})
+      return
+    }
     for(let item in cart){
-      console.log(item);
+      // console.log(item);
       sumTotal += cart[item].price * cart[item].qty;
       product = await Product.findOne({slug: item})
       // Check if the cart items are out of stock
@@ -25,12 +29,20 @@ const handler = async (req, res) => {
     }
     if(sumTotal !== req.body.subTotal){
       res.status(200).json({success:false, "error": "The price of some items in your cart have changed. Please try again"})
-
       return
     }
     
 
     // Check is the details are valid
+    // console.log(typeof req.body.phone)
+    if(req.body.phone.length !==10 || !Number.isInteger(req.body.phone)){
+      res.status(200).json({success:false, "error": "Please Enter your 10-Digit Phone Number"})
+      return
+    }
+    if(req.body.pincode.length !==6 || !Number.isInteger(req.body.pincode)){
+      res.status(200).json({success:false, "error": "Please Enter your 6-Digit Pincode"})
+      return
+    }
 
     // Initiate an order corresponding ot the order id
     let order = new Order({

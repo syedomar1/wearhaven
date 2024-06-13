@@ -203,12 +203,12 @@ const Checkout = ({cart, clearCart, subTotal, addToCart, removeFromCart }) => {
         <div className="px-2 w-1/2">
           <div className="mb-4">
             <label htmlFor="phone" className="leading-7 text-sm text-gray-600">
-              Phone
+              Phone Number
             </label>
-            <input
+            <input placeholder="Enter your 10-Digit Phone Number"
               onChange={handleChange}
               value={phone}
-              type="number"
+              type="phone"
               id="phone"
               name="phone"
               className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
@@ -253,7 +253,7 @@ const Checkout = ({cart, clearCart, subTotal, addToCart, removeFromCart }) => {
         <div className="px-2 w-1/2">
           <div className="mb-4">
             <label htmlFor="city" className="leading-7 text-sm text-gray-600">
-              City
+              District
             </label>
             <input
               onChange={handleChange}
