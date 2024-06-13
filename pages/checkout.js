@@ -10,7 +10,7 @@ import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
 import { IoBagCheckOutline } from "react-icons/io5";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 
-const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
+const Checkout = ({ cart, clearCart, subTotal, addToCart, removeFromCart }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -94,6 +94,7 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
         });
     } else {
       // console.log(txnRes.error);
+      clearCart();
       toast.error(txnRes.error, {
         position: "top-right",
         autoClose: 3000,

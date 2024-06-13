@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import mongoose from "mongoose";
 import Order from '@/models/Order'
 
-const MyOrder = ({order}) => {
-  // const router = useRouter()
+const MyOrder = ({order, clearCart}) => {
   // const {id} = router.query
   // console.log(id)
-  // console.log(order)
   const products = order.products;
-  console.log(order.products)
+  // console.log(order.products)
+  const router = useRouter()
+  useEffect(() =>{
+    if(router.query.clearCart == 1){
+      clearCart()
+    }
+  },[])
+  // console.log(order.products)
   if (!order) {
     return (
       <div className="container mx-auto text-center py-24">
