@@ -12,10 +12,10 @@ const Post = ({ buyNow, addToCart, product, variants }) => {
   const [pin, setPin] = useState();
   const [service, setService] = useState();
   const checkServiceAvailability = async () => {
-    let pins = await fetch("http://localhost:3000/api/pincode");
+    let pins = await fetch("/api/pincode");
     let pinJson = await pins.json();
     // console.log(pinJson,pin)
-    if (pinJson.includes(parseInt(pin))) {
+    if (Object.keys(pinJson).includes(pin)) {
       setService(true);
       toast.success("Your pincode is serviceable", {
         position: "bottom-center",
