@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
@@ -10,7 +10,7 @@ import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
 import { IoBagCheckOutline } from "react-icons/io5";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 
-const Checkout = ({ cart, clearCart, subTotal, addToCart, removeFromCart }) => {
+const Checkout = ({cart, clearCart, subTotal, addToCart, removeFromCart }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -19,6 +19,17 @@ const Checkout = ({ cart, clearCart, subTotal, addToCart, removeFromCart }) => {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [disabled, setDisabled] = useState(true);
+  const [user, setUser] = useState({value:null})
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('myuser'))
+
+    if (user.token) {
+      setUser(user)
+      setEmail(user.email);
+    }
+  },[])
+
   const handleChange = async (e) => {
     if (e.target.name == "name") {
       setName(e.target.value);
@@ -156,6 +167,13 @@ const Checkout = ({ cart, clearCart, subTotal, addToCart, removeFromCart }) => {
             <label htmlFor="email" className="leading-7 text-sm text-gray-600">
               Email
             </label>
+            {user && user.value? <input
+              value={user.email}
+              type="email"
+              id="email"
+              name="email"
+              className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly
+            /> :
             <input
               onChange={handleChange}
               value={email}
@@ -163,7 +181,7 @@ const Checkout = ({ cart, clearCart, subTotal, addToCart, removeFromCart }) => {
               id="email"
               name="email"
               className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-            />
+            />}
           </div>
         </div>
       </div>
@@ -190,7 +208,7 @@ const Checkout = ({ cart, clearCart, subTotal, addToCart, removeFromCart }) => {
             <input
               onChange={handleChange}
               value={phone}
-              type="phone"
+              type="number"
               id="phone"
               name="phone"
               className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
