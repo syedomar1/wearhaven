@@ -4,21 +4,23 @@ import mongoose, { set } from "mongoose";
 import Product from "@/models/Product";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Error from "next/error";
 
-const Post = ({ buyNow, addToCart, product, variants }) => {
+const Post = ({ buyNow, addToCart, product, variants, error }) => {
   // console.log(product, variants)
   const router = useRouter();
   const { slug } = router.query;
   const [pin, setPin] = useState();
   const [service, setService] = useState();
-  const [color, setColor] = useState(product.color);
-  const [size, setSize] = useState(product.size);
+  const [color, setColor] = useState();
+  const [size, setSize] = useState();
 
   useEffect(() => {
-    setColor(product.color)
-    setSize(product.size)
-  }, [router.query])
-  
+    if(!error){
+    setColor(product.color);
+    setSize(product.size);
+    }
+  }, [router.query]);
 
   const checkServiceAvailability = async () => {
     let pins = await fetch("/api/pincode");
@@ -56,13 +58,15 @@ const Post = ({ buyNow, addToCart, product, variants }) => {
     setPin(e.target.value);
   };
 
-  
-
   const refreshVariant = (newSize, newColor) => {
+    // console.log('v is ',variants, newsize, newcolor)
     let url = `/product/${variants[newColor][newSize]["slug"]}`;
     // window.location = url;
     router.push(url);
   };
+  if(error == 404){
+    return <Error statusCode={404} />
+  }
 
   return (
     <>
@@ -226,19 +230,19 @@ const Post = ({ buyNow, addToCart, product, variants }) => {
                       }}
                       className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-red-200 focus:border-red-500 text-base pl-3 pr-10"
                     >
-                      {Object.keys(variants[color]).includes("S") && (
+                      {color && Object.keys(variants[color]).includes("S") && (
                         <option value={"S"}>S</option>
                       )}
-                      {Object.keys(variants[color]).includes("M") && (
+                      {color && Object.keys(variants[color]).includes("M") && (
                         <option value={"M"}>M</option>
                       )}
-                      {Object.keys(variants[color]).includes("L") && (
+                      {color && Object.keys(variants[color]).includes("L") && (
                         <option value={"L"}>L</option>
                       )}
-                      {Object.keys(variants[color]).includes("XL") && (
+                      {color && Object.keys(variants[color]).includes("XL") && (
                         <option value={"XL"}>XL</option>
                       )}
-                      {Object.keys(variants[color]).includes("XXL") && (
+                      {color && Object.keys(variants[color]).includes("XXL") && (
                         <option value={"XXL"}>XXL</option>
                       )}
                     </select>
@@ -259,32 +263,64 @@ const Post = ({ buyNow, addToCart, product, variants }) => {
                 </div>
               </div>
               <div className="flex">
-                <span className="title-font font-medium text-2xl text-gray-900">
-                  ₹{product.price}
-                </span>
-                <button
-                  onClick={() => {
-                    addToCart(
-                      slug,
-                      1,
-                      product.price,
-                      product.title,
-                      size,
-                      color
-                    );
-                  }}
-                  className="flex ml-8 text-white bg-red-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-red-600 rounded"
-                >
-                  Add to cart
-                </button>
-                <button
-                  onClick={() => {
-                    buyNow(slug, 1, product.price, product.title, size, color);
-                  }}
-                  className="flex ml-4 text-white bg-red-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-red-600 rounded"
-                >
-                  Buy Now
-                </button>
+                {product.availableQty > 0 ? (
+                  <span className="title-font font-medium text-2xl text-gray-900">
+                    ₹{product.price}
+                  </span>
+                ) : (
+                  <span className="title-font font-medium text-2xl text-gray-900">
+                    Out of Stock!
+                  </span>
+                )}
+                {product.availableQty > 0 ? (
+                  <button
+                    onClick={() => {
+                      addToCart(
+                        slug,
+                        1,
+                        product.price,
+                        product.title,
+                        size,
+                        color
+                      );
+                    }}
+                    className="flex ml-8 text-white bg-red-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-red-600 rounded"
+                  >
+                    Add to cart
+                  </button>
+                ) : (
+                  <button
+                    disabled
+                    className="flex ml-8 text-white bg-red-300 border-0 py-2 px-2 md:px-6 focus:outline-none rounded"
+                  >
+                    Add to cart later
+                  </button>
+                )}
+
+                {product.availableQty > 0 ? (
+                  <button
+                    onClick={() => {
+                      buyNow(
+                        slug,
+                        1,
+                        product.price,
+                        product.title,
+                        size,
+                        color
+                      );
+                    }}
+                    className="flex ml-4 text-white bg-red-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-red-600 rounded"
+                  >
+                    Buy Now
+                  </button>
+                ) : (
+                  <button
+                    disabled
+                    className="flex ml-4 text-white bg-red-300 border-0 py-2 px-2 md:px-6 focus:outline-none rounded"
+                  >
+                    Buy Later
+                  </button>
+                )}
                 {/* <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
             <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
               <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
@@ -324,10 +360,18 @@ const Post = ({ buyNow, addToCart, product, variants }) => {
 };
 
 export async function getServerSideProps(context) {
+  let error=null;
   if (!mongoose.connections[0].readyState) {
     await mongoose.connect(process.env.MONGO_URI);
   }
   let product = await Product.findOne({ slug: context.query.slug });
+  if (!product) {
+    return {
+      props: {
+        error: 404,
+      },
+    };
+  }
   let variants = await Product.find({
     title: product.title,
     category: product.category,
@@ -343,6 +387,7 @@ export async function getServerSideProps(context) {
   }
   return {
     props: {
+      error:error,
       product: JSON.parse(JSON.stringify(product)),
       variants: JSON.parse(JSON.stringify(colorSizeSlug)),
     },
