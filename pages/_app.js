@@ -56,6 +56,9 @@ export default function App({ Component, pageProps }) {
   }
 
   const addToCart = (itemCode, qty, price, name, size, variant) => {
+    if(Object.keys(cart).length == 0){
+      setKey(Math.random())
+    }
     let newCart = { ...cart }
     if (itemCode in newCart) {
       newCart[itemCode].qty = newCart[itemCode].qty + qty;
@@ -63,6 +66,7 @@ export default function App({ Component, pageProps }) {
       newCart[itemCode] = { qty, price, name, size, variant }
     }
     setCart(newCart)
+    // console.log(newCart)
     saveCart(newCart)
   }
 
