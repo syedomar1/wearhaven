@@ -81,7 +81,7 @@ export default function App({ Component, pageProps }) {
   const clearCart = () => {
     setCart({})
     saveCart({})
-    console.log("Cart has been cleared")
+    // console.log("Cart has been cleared")
   }
 
   const removeFromCart = (itemCode, qty) => {

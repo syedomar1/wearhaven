@@ -54,11 +54,16 @@ const handler = async (req, res) => {
 
     // Initiate an order corresponding ot the order id
     let order = new Order({
+      name: req.body.name,
       email: req.body.email,
       orderId: req.body.oid,
-      products: req.body.cart,
       address: req.body.address,
+      phone: req.body.phone,
+      city: req.body.city, 
+      state: req.body.state, 
+      pincode: req.body.pincode,
       amount: req.body.subTotal,
+      products: req.body.cart
     });
     await order.save();
 

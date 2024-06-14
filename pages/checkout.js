@@ -22,11 +22,12 @@ const Checkout = ({cart, clearCart, subTotal, addToCart, removeFromCart }) => {
   const [user, setUser] = useState({value:null})
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('myuser'))
+    const myuser = JSON.parse(localStorage.getItem('myuser'))
 
-    if (user && user.token) {
-      setUser(user)
-      setEmail(user.email);
+    if (myuser && myuser.token) {
+      setUser(myuser)
+      setEmail(myuser.email);
+      fetchData(myuser.token)
     }
   },[])
 
@@ -37,7 +38,38 @@ const Checkout = ({cart, clearCart, subTotal, addToCart, removeFromCart }) => {
       setDisabled(true);
     }
   }, [name, email, phone, pincode, address])
-  
+
+  const fetchData = async(token) =>{
+    let data = {token: token}
+    // console.log(data);
+  let a = await fetch(`/api/getuser`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  let res = await a.json();
+  // console.log(res)
+  setName(res.name)
+  setAddress(res.address)
+  setPincode(res.pincode)
+  setPhone(res.phone)
+  getPincode(res.pincode)
+  }
+
+  const getPincode = async(pin)=>{
+    let pins = await fetch("/api/pincode");
+        let pinJson = await pins.json();
+        if (Object.keys(pinJson).includes(pin)) {
+          setState(pinJson[pin][1]);
+          setCity(pinJson[pin][0]);
+        }
+       else {
+        setState("");
+        setCity("");
+      }
+  }
 
   const handleChange = async (e) => {
     if (e.target.name == "name") {
@@ -50,22 +82,13 @@ const Checkout = ({cart, clearCart, subTotal, addToCart, removeFromCart }) => {
       setAddress(e.target.value);
     } else if (e.target.name == "pincode") {
       setPincode(e.target.value);
-      if (e.target.value.length == 6) {
-        let pins = await fetch("/api/pincode");
-        let pinJson = await pins.json();
-        if (Object.keys(pinJson).includes(e.target.value)) {
-          setState(pinJson[e.target.value][1]);
-          setCity(pinJson[e.target.value][0]);
-        }
-      } else {
-        setState("");
-        setCity("");
-      }
+    if (e.target.value.length == 6) {
+        getPincode(e.target.value)
     } else {
       setState("");
       setCity("");
     }
-    
+  }
   };
   const initiatePayment = async () => {
     let oid = Math.floor(Math.random() * Date.now());
