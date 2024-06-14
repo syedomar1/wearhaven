@@ -35,11 +35,11 @@ const handler = async (req, res) => {
 
     // Check is the details are valid
     // console.log(typeof req.body.phone)
-    if(req.body.phone.length !==10 || !Number.isInteger(req.body.phone)){
+    if(req.body.phone.length !==10 || !Number.isInteger(Number(req.body.phone))){
       res.status(200).json({success:false, "error": "Please Enter your 10-Digit Phone Number"})
       return
     }
-    if(req.body.pincode.length !==6 || !Number.isInteger(req.body.pincode)){
+    if(req.body.pincode.length !==6 || !Number.isInteger(Number(req.body.pincode))){
       res.status(200).json({success:false, "error": "Please Enter your 6-Digit Pincode"})
       return
     }
