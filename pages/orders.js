@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 // import mongoose from 'mongoose'
@@ -29,6 +30,13 @@ const Orders = () => {
     },[])
   return (
     <div className='min-h-screen'>
+      <Head>
+        <title>Orders - Wearhaven.com</title>
+        <meta
+          name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"
+        />
+      </Head>
       <h1 className='font-semibold text-2xl text-center p-8'>My Orders</h1>
       <div className="container mx-auto">
       <div className="flex flex-col">

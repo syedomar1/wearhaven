@@ -150,7 +150,7 @@ const Checkout = ({cart, clearCart, subTotal, addToCart, removeFromCart }) => {
     }
   };
   return (
-    <div className="container px-2 m-auto">
+    <div className="container px-2 m-auto  min-h-screen">
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -164,6 +164,7 @@ const Checkout = ({cart, clearCart, subTotal, addToCart, removeFromCart }) => {
         theme="light"
       />
       <Head>
+        <title>Checkout - Wearhaven.com</title>
         <meta
           name="viewport"
           content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"

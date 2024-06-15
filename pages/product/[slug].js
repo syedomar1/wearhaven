@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import mongoose, { set } from "mongoose";
 import Product from "@/models/Product";
@@ -70,7 +71,14 @@ const Post = ({ buyNow, addToCart, product, variants, error }) => {
 
   return (
     <>
-      <section className="text-gray-600 body-font overflow-hidden">
+      <section className="text-gray-600 body-font overflow-hidden min-h-screen">
+      <Head>
+        <title>{`${product.title} - Wearhaven.com`}</title>
+        <meta
+          name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"
+        />
+      </Head>
         <ToastContainer
           position="bottom-center"
           autoClose={3000}

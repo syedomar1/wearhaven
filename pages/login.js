@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { ToastContainer, toast, Bounce } from "react-toastify";
@@ -71,6 +72,13 @@ const Login = () => {
   };
   return (
     <div>
+      <Head>
+        <title>Login - Wearhaven.com</title>
+        <meta
+          name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"
+        />
+      </Head>
       <ToastContainer
         position="bottom-center"
         autoClose={3000}
@@ -83,7 +91,7 @@ const Login = () => {
         pauseOnHover
         theme="light"
       />
-      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex min-h-screen flex-col items-start justify-center px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto h-10 w-auto"

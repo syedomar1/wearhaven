@@ -1,6 +1,7 @@
 import {React,useEffect} from 'react'
 import Link from 'next/link'
 import { useRouter } from "next/router";
+import Head from 'next/head';
 
 
 const Forgot = () => {
@@ -12,7 +13,14 @@ const Forgot = () => {
   }, [])
   return (
     <div>
-<div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+      <Head>
+        <title>Forgot Password - Wearhaven.com</title>
+        <meta
+          name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"
+        />
+      </Head>
+<div className="flex min-h-screen flex-col items-start justify-center px-6 lg:px-8">
   <div className="sm:mx-auto sm:w-full sm:max-w-sm">
     <img className="mx-auto h-10 w-auto" src="/logo.png" alt="Your Company"/>
     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Reset your Password</h2>
