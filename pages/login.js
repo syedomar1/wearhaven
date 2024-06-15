@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CryptoJS from "crypto-js";
 
 const Login = () => {
   const router = useRouter();
