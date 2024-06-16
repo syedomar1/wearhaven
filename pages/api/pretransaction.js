@@ -7,7 +7,7 @@ import pincodes from  "../../pincodes.json"
 
 const handler = async (req, res) => {
   if (req.method == "POST") {
-
+    // console.log(req.body)
     // Check if the pincode is serviceable 
     if(!Object.keys(pincodes).includes(req.body.pincode)){
       res.status(200).json({success:false, "error": "We do not deliver to your location yet. Please check out soon!", cartClear: false})

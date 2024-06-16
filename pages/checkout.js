@@ -64,10 +64,12 @@ const Checkout = ({cart, clearCart, subTotal, addToCart, removeFromCart }) => {
         if (Object.keys(pinJson).includes(pin)) {
           setState(pinJson[pin][1]);
           setCity(pinJson[pin][0]);
+          // console.log("City and State set to:", pinJson[pin][0], pinJson[pin][1]); 
         }
        else {
         setState("");
         setCity("");
+        // console.log("Invalid pincode. City and State set to empty.");
       }
   }
 
@@ -89,10 +91,11 @@ const Checkout = ({cart, clearCart, subTotal, addToCart, removeFromCart }) => {
       setCity("");
     }
   }
+  // console.log({email, phone, address, pincode, city, state });
   };
   const initiatePayment = async () => {
     let oid = Math.floor(Math.random() * Date.now());
-    const data = { cart, subTotal, oid, email, name, address, pincode, phone };
+    const data = { cart, subTotal, oid, email, name, address, pincode, phone, city, state };
     let a = await fetch(`/api/pretransaction`, {
       method: "POST",
       headers: {
