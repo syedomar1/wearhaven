@@ -7,5 +7,4 @@ const Login = () => {
     </div>
   )
 }
- className='min-h-screen'
 export default Login
