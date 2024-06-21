@@ -5,6 +5,7 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import LoadingBar from 'react-top-loading-bar'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export default function App({ Component, pageProps }) {
   const [cart, setCart] = useState({})
@@ -98,6 +99,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
+    <SpeedInsights />
      <LoadingBar
         color='#e74c3c'
         progress={progress}
