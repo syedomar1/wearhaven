@@ -24,7 +24,7 @@
     "crypto-js": "^4.2.0",
     "feather-icons-react": "^0.7.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.4.1",
+    "mongoose": "^8.8.3",
     "next": "14.2.13",
     "nodemailer": "^6.9.13",
     "paytmchecksum": "^1.5.1",
